@@ -1,0 +1,5 @@
+description "He.Net tunnel"
+tunnel 94.242.59.125 216.66.80.30
+!ifconfig \$if inet6 alias 2001:470:1f0a:1d3::2 2001:470:1f0a:1d3::1 prefixlen 128
+inet6 alias 2001:470:1f0b:1d3::1
+!route -n add -inet6 default 2001:470:1f0a:1d3::1

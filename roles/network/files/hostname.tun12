@@ -1,0 +1,5 @@
+description "DN42 uplink to sammy"
+group dn42uplink
+
+!(cd /dev; sh MAKEDEV $\if)
+!/usr/local/sbin/openvpn --config /etc/openvpn/dn42-sammy/config --daemon dn42-sammy-uplink &

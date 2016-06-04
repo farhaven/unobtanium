@@ -1,0 +1,6 @@
+description "DN42 uplink to pr0j3ctx"
+group dn42uplink
+
+!(cd /dev; sh MAKEDEV \$if)
+!/usr/local/sbin/openvpn --config /etc/openvpn/dn42-pr0j3ctx/config --daemon dn42-pr0j3ctx-uplink &
+!route -n add -host 172.23.10.1 172.22.255.88

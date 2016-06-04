@@ -1,0 +1,4 @@
+description "DN42 uplink to stv0g"
+group dn42uplink
+
+# !/usr/local/sbin/openvpn --config /etc/openvpn/dn42-stv0g/config --daemon dn42-stv0g-uplink &

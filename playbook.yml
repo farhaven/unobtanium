@@ -1,0 +1,32 @@
+---
+- hosts: charm
+  roles:
+    - nginx
+    - smtpd
+    - network
+  tasks:
+    - name: configure pkg
+      copy: src=files/pkg.conf dest=/etc/pkg.conf
+#     - name: install packages
+#       package: name={{ item }} state=latest
+#       with_items:
+#         - bash
+#         - bitlbee--libpurple
+#         - bzip2
+#         - cvsync
+#         - git
+#         - iodine
+#         - mtr
+#         - ncdu
+#         - lftp
+#         - nmap
+#         - openvpn
+#         - pv
+#         - pwgen
+#         - tinc
+#         - tor
+#         - vim
+#         - weechat
+#         - weechat-lua
+#         - weechat-python
+#         - weechat-ruby

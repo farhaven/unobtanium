@@ -1,0 +1,10 @@
+---
+- name: enable
+  command: rcctl enable smtpd
+- name: configure
+  copy: src=roles/smtpd/files/{{ item }} dest=/etc/mail/{{ item }}
+  with_items:
+    - aliases
+    - smtpd.conf
+  notify:
+    - restart smtpd
