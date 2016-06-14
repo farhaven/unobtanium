@@ -1,13 +1,14 @@
 ---
 - hosts: charm
+  tasks:
+    - name: configure pkg
+      copy: src=files/pkg.conf dest=/etc/pkg.conf
+- hosts: charm
   roles:
     - nginx
     - smtpd
     - network
     - weechat
-  tasks:
-    - name: configure pkg
-      copy: src=files/pkg.conf dest=/etc/pkg.conf
 #     - name: install packages
 #       package: name={{ item }} state=latest
 #       with_items:
