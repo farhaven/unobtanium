@@ -10,7 +10,7 @@
     - network
     - weechat
 #     - name: install packages
-#       package: name={{ item }} state=latest
+#       package: name={{ item }} state=present
 #       with_items:
 #         - bash
 #         - bitlbee--libpurple

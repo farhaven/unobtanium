@@ -1,6 +1,6 @@
 ---
 - name: install
-  package: name=nginx state=latest
+  package: name=nginx state=present
 - name: enable slowcgi
   service: name=slowcgi enabled=yes
   notify:
