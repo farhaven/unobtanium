@@ -1,0 +1,5 @@
+---
+- name: install weechat
+  package: name=weechat state=latest
+- name: install py-crypto (for OTR)
+  package: name=py-crypto state=latest

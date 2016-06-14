@@ -4,6 +4,7 @@
     - nginx
     - smtpd
     - network
+    - weechat
   tasks:
     - name: configure pkg
       copy: src=files/pkg.conf dest=/etc/pkg.conf
