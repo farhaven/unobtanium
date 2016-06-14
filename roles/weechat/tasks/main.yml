@@ -1,5 +1,13 @@
 ---
 - name: install weechat
-  package: name=weechat state=latest
+  package: name=weechat state=present
+- name: install weechat language plugins
+  package: name=weechat-{{item.1}} state=present
+  with_indexed_items:
+    - lua
+    - python
+    - ruby
 - name: install py-crypto (for OTR)
-  package: name=py-crypto state=latest
+  package: name=py-crypto state=present
+- name: install bitlbee
+  package: name=bitlbee--libpurple state=present
