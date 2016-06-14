@@ -1,8 +1,14 @@
 ---
-# - name: install
-#   package: name=nginx state=latest
+- name: install
+  package: name=nginx state=latest
+- name: enable slowcgi
+  service: name=slowcgi enabled=yes
+  notify:
+    - restart slowcgi
 - name: enable
-  command: rcctl enable nginx
+  service: name=nginx enabled=yes
+  notify:
+    - restart nginx
 - name: configure
   copy: src=roles/nginx/files/{{ item }} dest=/etc/nginx/{{ item }}
   with_items:

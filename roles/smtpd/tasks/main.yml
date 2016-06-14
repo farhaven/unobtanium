@@ -1,6 +1,8 @@
 ---
 - name: enable
-  command: rcctl enable smtpd
+  service: name=smtpd enabled=yes
+  notify:
+    - restart smtpd
 - name: configure
   copy: src=roles/smtpd/files/{{ item }} dest=/etc/mail/{{ item }}
   with_items:
