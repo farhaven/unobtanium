@@ -5,9 +5,8 @@ my:
 peers:
   - name: sammy
     as: 76175
-    v4:
+    tunnels:
       - { r: 172.23.245.1, l: 172.22.255.84 }
-    v6:
       - { r: 'fd14:70d8:4a5a:3::6', l: 'fd14:70d8:4a5a:3::1' }
     openvpn:
       remote: border.dark-it.net
@@ -15,13 +14,12 @@ peers:
       tun: 12
   - name: nicoo
     as: 4242422121
-    v4:
+    tunnels:
       - { r: 172.22.247.15 }
   - name: unbedenklich
     as: 4242420020
-    v4:
+    tunnels:
       - { r: 172.22.255.86, l: 172.22.255.85 }
-    v6:
       - { r: 'fd14:70d8:4a5a:4::2', l: 'fd14:70d8:4a5a:4::1' }
     openvpn:
       remote: dn42peering.services.unbedenklich.net
@@ -30,9 +28,8 @@ peers:
       tun: 13
   - name: pr0j3ctx
     as: 4242422424
-    v4:
+    tunnels:
       - { r: 172.22.255.88, l: 172.22.255.87 }
-    v6:
       - { r: 'fd14:70d8:4a5a:5::2', l: 'fd14:70d8:4a5a:5::1' }
     openvpn:
       rport: 53020
@@ -41,15 +38,13 @@ peers:
       tun: 14
   - name: crest
     as: 64828
-    v4:
+    tunnels:
       - { r: 172.22.254.65 }
-    v6:
       - { r: 'fd2d:82f6:9b63:1::ac16:fe41' }
   - name: eri
     as: 4242421375
-    v4:
+    tunnels:
       - { r: 172.23.64.1, l: 172.22.255.91 }
-    v6:
       - { r: 'fd14:70d8:4a5a:10::2', l: 'fd14:70d8:4a5a:10::1' }
     openvpn:
       remote: chelnok.de
@@ -57,7 +52,7 @@ peers:
       tun: 16
   - name: florianb
     as: 4242423955
-    v4:
+    tunnels:
       - { r: 172.20.2.17, l: 172.22.255.93 }
     openvpn:
       remote: 5.1.86.30
@@ -65,43 +60,30 @@ peers:
       tun: 17
   - name: leeps
     as: 4242422344
-    v4:
+    tunnels:
       - { r: 172.23.55.15, l: 172.22.255.91 }
     openvpn:
       port: 37176
       tun: 6
   - name: leroy
     as: 76136
-    v4:
+    tunnels:
       - { r: 172.23.253.1 }
       - { r: 172.23.253.4 }
-    v6:
-      - { r: 'fd14:70d8:4a5a:6::2'}
+      - { r: 'fd14:70d8:4a5a:6::2' }
       - { r: 'fd14:70d8:4a5a:7::2' }
-#   - name: psclrnnrt
-#     as: 4242420205
-#     v4:
-#       - { r: 172.22.255.90, l: 172.22.255.89 }
-#     v6:
-#       - { r: 'fd14:70d8:4a5a:9::2', l: 'fd14:70d8:4a5a:9::1' }
-#     openvpn:
-#       remote: ru01.dn42.root6.de
-#       port: 37175
-#       rport: 1195
-#       tun: 15
   - name: feuerrot
     as: 76140
+    tunnels: []
   - name: tioan
     as: 4242422323
-    v4:
+    tunnels:
       - { r: 172.22.255.83 }
-    v6:
       - { r: 'fd14:70d8:4a5a:2::2' }
   - name: space
     as: 4242422343
-    v4:
+    tunnels:
       - { r: 172.22.255.73, l: 172.22.255.68 }
-    v6:
       - { r: 'fd14:70d8:4a5a::2', l: 'fd14:70d8:4a5a::' }
     openvpn:
       remote: the-space.agency
@@ -109,7 +91,7 @@ peers:
       tun: 10
   - name: packbart
     as: 4242420042
-    v4:
+    tunnels:
       - { r: 172.23.232.81, l: 172.22.255.74 }
     openvpn:
       remote: vpn-farhaven.dn42.openchaos.org
@@ -118,7 +100,7 @@ peers:
       tun: 9
   - name: mwheeler
     as: 4242420004
-    v4:
+    tunnels:
       - { r: 172.23.221.3, l: 172.22.255.75 }
     openvpn:
       remote: 119.9.15.56
@@ -127,9 +109,8 @@ peers:
       tun: 8
   - name: MWD
     as: 4242420002
-    v4:
+    tunnels:
       - { r: 172.23.227.1, l: 172.22.255.72 }
-    v6:
       - { r: 'fd14:70d8:4a5a:1::1', l: 'fd14:70d8:4a5a:1::' }
     openvpn:
       remote: 103.24.132.66
@@ -138,16 +119,14 @@ peers:
       tun: 7
   - name: gigadoc2
     as: 4242420003
-    v4:
+    tunnels:
       - { r: 172.22.255.71 }
-    v6:
       - { r: 'fd14:70d8:4a5a:8::2' }
       # - { r: 'fe80::200:5efe:52d:6031%gre1' }
   - name: stv0g
     as: 76100
-    v4:
+    tunnels:
       - { r: 172.22.255.37, l: 172.22.255.36 }
-    v6:
       - { r: 'fd14:70d8:4a5a::1', l: 'fd14:70d8:4a5a::' }
     openvpn:
       # XXX: add 'proto udp6' to config?
@@ -157,7 +136,7 @@ peers:
       tun: 1
   - name: Nurtic-Vibe
     as: 4242420123
-    v4:
+    tunnels:
       - { r: 172.23.162.208, l: 172.22.255.65 }
     openvpn:
       remote: de02.dn42.grmml.eu
@@ -166,7 +145,7 @@ peers:
       tun: 3
   - name: petrus
     as: 64751
-    v4:
+    tunnels:
       - { r: 172.22.151.230, l: 172.22.255.67 }
     openvpn:
       rport: 2323
@@ -175,7 +154,7 @@ peers:
       tun: 5
   - name: nazco
     as: 76118
-    v4:
+    tunnels:
       - { r: 172.23.138.1, l: 172.22.255.66 }
     openvpn:
       remote: dn42.peering.nazco.de
