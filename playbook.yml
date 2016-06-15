@@ -3,6 +3,7 @@
 # - gogs
 # - tinc
 # - tor?
+# - install py-netaddr on deploy host?
 ---
 - hosts: charm
   tasks:
