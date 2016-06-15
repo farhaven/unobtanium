@@ -1,3 +1,12 @@
+# Missing:
+# - OpenVPN
+#   - Crest (just remove the peering?)
+# - IPSec
+# - OSPF
+# - Name server
+# - Looking glass
+# - DN42 specific mail server stuff?
+#   - similar to PF config
 ---
 - name: set up DN42 PF configuration
   template: src=roles/dn42/templates/pf.dn42.conf dest=/etc/pf.dn42.conf mode=0640
