@@ -1,0 +1,19 @@
+---
+- name: install openvpn
+  package: name=openvpn state=present
+- name: enable bgpd
+  service: name=bgpd enabled=yes
+  notify:
+    - restart bgpd
+
+- name: configure bgpd
+  template: src=roles/dn42/templates/bgpd.conf dest=/etc/bgpd.conf mode=640
+  notify:
+    - reload bgp config
+- name: create BGP peer directory
+  file: path=/etc/bgp state=directory
+- name: set up BGP peers
+  template: src=roles/dn42/templates/bgp-peer.conf dest=/etc/bgp/{{ item.name }}.conf mode=640
+  with_items: "{{ peers }}"
+  notify:
+    - reload bgp config

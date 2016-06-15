@@ -9,6 +9,7 @@
     - smtpd
     - network
     - weechat
+    - dn42
 #     - name: install packages
 #       package: name={{ item }} state=present
 #       with_items:

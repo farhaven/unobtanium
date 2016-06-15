@@ -1,0 +1,81 @@
+---
+my:
+  as: 4242422342
+  router_id: 172.22.127.1
+peers:
+  - name: sammy
+    as: 76175
+    v4: 172.23.245.1
+    v6: fd14:70d8:4a5a:3::6
+  - name: nicoo
+    as: 4242422121
+    v4: 172.22.247.15
+  - name: unbedenklich
+    as: 4242420020
+    v4: 172.22.255.86
+    v6: fd14:70d8:4a5a:4::2
+  - name: pr0j3ctx
+    as: 4242422424
+    v4: 172.22.255.88
+    v6: fd14:70d8:4a5a:5::2
+  - name: crest
+    as: 64828
+    v4: 172.22.254.65
+    v6: fd2d:82f6:9b63:1::ac16:fe41
+  - name: eri
+    as: 4242421375
+    v4: 172.23.64.1
+    v6: fd14:70d8:4a5a:10::2
+  - name: florianb
+    as: 4242423955
+    v4: 172.20.2.17
+  - name: leeps
+    as: 4242422344
+    v4: 172.23.55.15
+  - name: leroy
+    as: 76136
+    v4:
+      - 172.23.253.1
+      - 172.23.253.4
+    v6: 
+      - fd14:70d8:4a5a:6::2
+      - fd14:70d8:4a5a:7::2
+  - name: psclrnnrt
+    as: 4242420205
+    v4: 172.22.255.90
+    v6: fd14:70d8:4a5a:9::2
+  - name: feuerrot
+    as: 76140
+  - name: tioan
+    as: 4242422323
+    v4: 172.22.255.83
+    v6: fd14:70d8:4a5a:2::2
+  - name: space
+    as: 4242422343
+    v4: 172.22.255.73
+  - name: packbart
+    as: 4242420042
+    v4: 172.23.232.81
+  - name: mwheeler
+    as: 4242420004
+    v4: 172.23.221.3
+  - name: MWD
+    as: 4242420002
+    v4: 172.23.227.1
+    v6: fd14:70d8:4a5a:1::1
+  - name: gigadoc2
+    as: 4242420003
+    v4: 172.22.255.71
+    v6:
+      - fd14:70d8:4a5a:8::2
+      # - fe80::200:5efe:52d:6031%gre1
+  - name: stv0g
+    as: 76100
+    v4: 172.22.255.37
+    v6: fd14:70d8:4a5a::1
+  - name: Nurtic-Vibe
+    as: 4242420123
+    v4: 172.23.162.208
+  - name: petrus
+    as: 64751
+    neighbor: 172.22.151.230

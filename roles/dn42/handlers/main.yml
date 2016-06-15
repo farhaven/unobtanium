@@ -1,0 +1,5 @@
+---
+- name: restart bgpd
+  service: name=bgpd state=restarted
+- name: reload bgp config
+  command: bgpctl reload
