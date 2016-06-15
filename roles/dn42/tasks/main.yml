@@ -1,15 +1,39 @@
 ---
+- name: set up DN42 PF configuration
+  template: src=roles/dn42/templates/pf.dn42.conf dest=/etc/pf.dn42.conf mode=0640
+  notify:
+    - reload pf ruleset
+
 - name: install openvpn
   package: name=openvpn state=present
+- name: create openvpn directories
+  file: path=/etc/openvpn/dn42-{{ item.name }} state=directory
+  with_items: "{{ peers|selectattr('openvpn', 'defined')|list }}"
+- name: configure openvpn
+  template: src=roles/dn42/templates/openvpn.conf dest=/etc/openvpn/dn42-{{ item.name }}/config
+  with_items: "{{ peers|selectattr('openvpn', 'defined')|list }}"
+  notify:
+    - netstart
+- name: deploy openvpn keys
+  copy: src=roles/dn42/files/openvpn/key-{{ item.name }} dest=/etc/openvpn/dn42-{{ item.name }}/key
+  with_items: "{{ peers|selectattr('openvpn', 'defined')|list }}"
+  notify:
+    - netstart
+- name: configure openvpn hostnames
+  template: src=roles/dn42/templates/hostname dest=/etc/hostname.tun{{ item.openvpn.tun }}
+  with_items: "{{ peers|selectattr('openvpn', 'defined')|list }}"
+  notify:
+    - netstart
+
 - name: enable bgpd
   service: name=bgpd enabled=yes
   notify:
     - restart bgpd
-
 - name: configure bgpd
   template: src=roles/dn42/templates/bgpd.conf dest=/etc/bgpd.conf mode=640
   notify:
     - reload bgp config
+
 - name: create BGP peer directory
   file: path=/etc/bgp state=directory
 - name: set up BGP peers
