@@ -1,6 +1,5 @@
 # Missing:
 # - OpenVPN
-#   - Crest (just remove the peering?)
 #   - automatically enumerate tun devices
 #     - is that still required with dynamic tun?
 # - IPSec

@@ -36,28 +36,6 @@ peers:
       port: 37174
       remote: dn42.xt0.org
       tun: 14
-  - name: crest
-    as: 64828
-    tunnels:
-      - { r: 172.22.254.65 }
-      - { r: 'fd2d:82f6:9b63:1::ac16:fe41' }
-  - name: eri
-    as: 4242421375
-    tunnels:
-      - { r: 172.23.64.1, l: 172.22.255.91 }
-      - { r: 'fd14:70d8:4a5a:10::2', l: 'fd14:70d8:4a5a:10::1' }
-    openvpn:
-      remote: chelnok.de
-      port: 2316
-      tun: 16
-  - name: florianb
-    as: 4242423955
-    tunnels:
-      - { r: 172.20.2.17, l: 172.22.255.93 }
-    openvpn:
-      remote: 5.1.86.30
-      port: 37177
-      tun: 17
   - name: leeps
     as: 4242422344
     tunnels:
@@ -89,24 +67,6 @@ peers:
       remote: the-space.agency
       port: 37171
       tun: 10
-  - name: packbart
-    as: 4242420042
-    tunnels:
-      - { r: 172.23.232.81, l: 172.22.255.74 }
-    openvpn:
-      remote: vpn-farhaven.dn42.openchaos.org
-      rport: 1809
-      port: 37170
-      tun: 9
-  - name: mwheeler
-    as: 4242420004
-    tunnels:
-      - { r: 172.23.221.3, l: 172.22.255.75 }
-    openvpn:
-      remote: 119.9.15.56
-      rport: 58865
-      port: 37169
-      tun: 8
   - name: MWD
     as: 4242420002
     tunnels:
@@ -123,35 +83,6 @@ peers:
       - { r: 172.22.255.71 }
       - { r: 'fd14:70d8:4a5a:8::2' }
       # - { r: 'fe80::200:5efe:52d:6031%gre1' }
-  - name: stv0g
-    as: 76100
-    tunnels:
-      - { r: 172.22.255.37, l: 172.22.255.36 }
-      - { r: 'fd14:70d8:4a5a::1', l: 'fd14:70d8:4a5a::' }
-    openvpn:
-      # XXX: add 'proto udp6' to config?
-      remote: 2a03:b0c0:1:d0::2e3:c001
-      port: 31218
-      rport: 37163
-      tun: 1
-  - name: Nurtic-Vibe
-    as: 4242420123
-    tunnels:
-      - { r: 172.23.162.208, l: 172.22.255.65 }
-    openvpn:
-      remote: de02.dn42.grmml.eu
-      port: 37164
-      rport: 2433
-      tun: 3
-  - name: petrus
-    as: 64751
-    tunnels:
-      - { r: 172.22.151.230, l: 172.22.255.67 }
-    openvpn:
-      rport: 2323
-      port: 37166
-      remote: poum.tk
-      tun: 5
   - name: nazco
     as: 76118
     tunnels:
