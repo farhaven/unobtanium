@@ -41,7 +41,7 @@
     - restart nginx
 # XXX: only if key is not already there
 - name: generate letsencrypt key
-  command: letskencrypt -vn unobtanium.de git.unobtanium.de www.unobtanium.de
+  command: /usr/local/bin/letskencrypt -vn unobtanium.de git.unobtanium.de www.unobtanium.de
   args:
     creates: /etc/letsencrypt/privkey.pem
   notify:
@@ -50,5 +50,7 @@
 - name: add letsencrypt cron job
   cron:
     name: "Letsencrypt"
-    job: letskencrypt -v unobtanium.de git.unobtanium.de www.unobtanium.de && rcctl reload nginx
+    job: /usr/local/bin/letskencrypt -v unobtanium.de git.unobtanium.de www.unobtanium.de && rcctl reload nginx
     day: "*/7"
+    hour: "0"
+    minute: "0"
