@@ -16,6 +16,11 @@
   notify:
     - restart nginx
 
+- name: configure newsyslog
+  replace:
+    dest: /etc/newsyslog.conf
+    regexp: '^(/var/www/logs/.*\.log.*Z) ".+"$'
+    replace: '\1 "rcctl reload nginx"'
 - name: install letsencrypt
   package: name=letskencrypt state=present
 - name: prepare letsencrypt directory
