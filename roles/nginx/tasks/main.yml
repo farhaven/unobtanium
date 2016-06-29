@@ -12,10 +12,7 @@
 - name: configure
   copy: src=roles/nginx/files/{{ item }} dest=/etc/nginx/{{ item }}
   with_items:
-    - fastcgi_params
     - nginx.conf
-    - scgi_params
-    - uwsgi_params
   notify:
     - restart nginx
 
