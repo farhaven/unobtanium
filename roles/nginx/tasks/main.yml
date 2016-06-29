@@ -21,14 +21,34 @@
     dest: /etc/newsyslog.conf
     regexp: '^(/var/www/logs/.*\.log.*Z) ".+"$'
     replace: '\1 "rcctl reload nginx"'
+
+#- name: generate DH parameters
+#  command: openssl dhparam -out /etc/ssl/dhparam.pem 4096
+#  args:
+#    creates: /etc/ssl/dhparam.pem
+#  notify:
+#    - restart nginx
+
 - name: install letsencrypt
   package: name=letskencrypt state=present
 - name: prepare letsencrypt directory
   file: path=/etc/letsencrypt state=directory
-# XXX: Generate OpenSSL private key:
-# openssl genrsa -out /etc/ssl/letsencrypt/private/privkey.pem 2048
+- name: generate OpenSSL private key
+  command: openssl genrsa -out /etc/ssl/letsencrypt/private/privkey.pem 2048
+  args:
+    creates: /etc/ssl/letsencrypt/private/privkey.pem
+  notify:
+    - restart nginx
 # XXX: only if key is not already there
-#- name: generate letsencrypt key
-#  command: letskencrypt -vn unobtanium.de git.unobtanium.de www.unobtanium.de
-#- name: refresh letsencrypt certificate
-#  command: letskencrypt -v unobtanium.de git.unobtanium.de www.unobtanium.de
+- name: generate letsencrypt key
+  command: letskencrypt -vn unobtanium.de git.unobtanium.de www.unobtanium.de
+  args:
+    creates: /etc/letsencrypt/privkey.pem
+  notify:
+    - refresh letsencrypt certificate
+    - restart nginx
+- name: add letsencrypt cron job
+  cron:
+    name: "Letsencrypt"
+    job: letskencrypt -v unobtanium.de git.unobtanium.de www.unobtanium.de && rcctl reload nginx
+    day: "*/7"

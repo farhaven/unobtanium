@@ -3,3 +3,5 @@
   service: name=slowcgi state=restarted
 - name: restart nginx
   service: name=nginx state=restarted
+- name: refresh letsencrypt certificate
+  command: letskencrypt -v unobtanium.de git.unobtanium.de www.unobtanium.de
