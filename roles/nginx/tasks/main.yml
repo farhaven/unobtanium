@@ -18,3 +18,15 @@
     - uwsgi_params
   notify:
     - restart nginx
+
+- name: install letsencrypt
+  package: name=letskencrypt state=present
+- name: prepare letsencrypt directory
+  file: path=/etc/letsencrypt state=directory
+# XXX: Generate OpenSSL private key:
+# openssl genrsa -out /etc/ssl/letsencrypt/private/privkey.pem 2048
+# XXX: only if key is not already there
+#- name: generate letsencrypt key
+#  command: letskencrypt -vn unobtanium.de git.unobtanium.de www.unobtanium.de
+#- name: refresh letsencrypt certificate
+#  command: letskencrypt -v unobtanium.de git.unobtanium.de www.unobtanium.de
