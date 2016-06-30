@@ -39,7 +39,6 @@
     creates: /etc/ssl/letsencrypt/private/privkey.pem
   notify:
     - restart nginx
-# XXX: only if key is not already there
 - name: generate letsencrypt key
   command: /usr/local/bin/letskencrypt -vn unobtanium.de git.unobtanium.de www.unobtanium.de
   args:
