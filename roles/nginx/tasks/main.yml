@@ -22,12 +22,12 @@
     regexp: '^(/var/www/logs/.*\.log.*Z) ".+"$'
     replace: '\1 "rcctl reload nginx"'
 
-#- name: generate DH parameters
-#  command: openssl dhparam -out /etc/ssl/dhparam.pem 4096
-#  args:
-#    creates: /etc/ssl/dhparam.pem
-#  notify:
-#    - restart nginx
+- name: generate DH parameters
+  command: openssl dhparam -out /etc/ssl/dhparam.pem 4096
+  args:
+    creates: /etc/ssl/dhparam.pem
+  notify:
+    - restart nginx
 
 - name: install letsencrypt
   package: name=letskencrypt state=present
