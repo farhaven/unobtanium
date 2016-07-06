@@ -46,6 +46,8 @@
   notify:
     - refresh letsencrypt certificate
     - restart nginx
+- name: change permissions for letsencrypt private key
+  file: path=/etc/ssl/letsencrypt/private/privkey.pem mode=0640
 - name: add letsencrypt cron job
   cron:
     name: "Letsencrypt"
