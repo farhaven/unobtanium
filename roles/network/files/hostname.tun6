@@ -1,5 +1,0 @@
-description "DN42 uplink to leeps"
-group dn42uplink
-
-!(cd /dev; sh MAKEDEV $\if)
-!/usr/local/sbin/openvpn --config /etc/openvpn/dn42-leeps/config --daemon dn42-leeps-uplink &

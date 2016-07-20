@@ -1,4 +1,0 @@
-description "DN42 uplink to Nurtic-Vibe"
-group dn42uplink
-
-!/usr/local/sbin/openvpn --config /etc/openvpn/dn42-nurtic-vibe/config --daemon dn42-nurtic-vibe-uplink &

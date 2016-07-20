@@ -1,5 +1,0 @@
-description "DN42 uplink to mwheeler"
-# group dn42uplink
-# 
-# !(cd /dev; sh MAKEDEV $\if)
-# !/usr/local/sbin/openvpn --config /etc/openvpn/dn42-mwheeler/config --daemon dn42-mwheeler-uplink

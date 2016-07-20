@@ -1,5 +1,0 @@
-description "DN42 uplink to nazco"
-group dn42uplink
-
-!(cd /dev; sh MAKEDEV $\if)
-!/usr/local/sbin/openvpn --config /etc/openvpn/dn42-nazco/config --daemon dn42-nazco-uplink &
