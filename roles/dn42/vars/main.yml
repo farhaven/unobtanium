@@ -3,6 +3,14 @@ my:
   as: 4242422342
   router_id: 172.22.127.1
 peers:
+  - name: moho
+    as: 4242423754
+    openvpn:
+      remote: hawking.mholtz.de
+      port: 30012
+      tun: 3
+    tunnels:
+      - { r: 10.48.0.1, l: 10.48.0.2 }
   - name: sammy
     as: 76175
     tunnels:
