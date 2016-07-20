@@ -24,9 +24,14 @@
   with_items: "{{ peers|selectattr('openvpn', 'defined')|list }}"
   notify:
     - netstart
+- name: load openvpn keys
+  include_vars: "roles/dn42/vars/keys.yml"
+  no_log: true
 - name: deploy openvpn keys
-  copy: src=roles/dn42/files/openvpn/key-{{ item.name }} dest=/etc/openvpn/dn42-{{ item.name }}/key
-  with_items: "{{ peers|selectattr('openvpn', 'defined')|list }}"
+  copy:
+    dest: /etc/openvpn/dn42-{{ item.name }}/key
+    content: "{{ openvpn_keys[item.name] }}"
+  with_items: "{{ peers | selectattr('openvpn', 'defined')|list }}"
   notify:
     - netstart
 - name: configure openvpn hostnames
