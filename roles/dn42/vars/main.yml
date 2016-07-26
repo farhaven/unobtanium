@@ -6,11 +6,11 @@ peers:
   - name: moho
     as: 4242423754
     openvpn:
-      remote: hawking.mholtz.de
+      remote: dn42.mholtz.de
       port: 30012
       tun: 3
     tunnels:
-      - { r: 10.48.0.1, l: 10.48.0.2 }
+      - { r: 169.254.12.1, l: 169.254.12.2 }
   - name: nazco
     as: 76118
     tunnels:
