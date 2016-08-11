@@ -16,6 +16,7 @@
     - network
     - weechat
     - dn42
+    - ospf
 #     - name: install packages
 #       package: name={{ item }} state=present
 #       with_items:

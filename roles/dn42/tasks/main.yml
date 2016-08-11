@@ -3,7 +3,6 @@
 #   - automatically enumerate tun devices
 #     - is that still required with dynamic tun?
 # - IPSec
-# - OSPF
 # - Name server
 # - Looking glass
 # - DN42 specific mail server stuff?
