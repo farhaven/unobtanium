@@ -25,7 +25,7 @@
   notify:
     - netstart
 - name: load openvpn keys
-  include_vars: "roles/dn42/vars/keys.yml"
+  include_vars: "{{ role_path }}/vars/keys.yml"
   no_log: true
 - name: deploy openvpn keys
   copy:
@@ -44,15 +44,23 @@
   service: name=bgpd enabled=yes
   notify:
     - restart bgpd
+  tags:
+    - bgp
 - name: configure bgpd
   template: src=roles/dn42/templates/bgpd.conf dest=/etc/bgpd.conf mode=640
   notify:
     - reload bgp config
+  tags:
+    - bgp
 
 - name: create BGP peer directory
   file: path=/etc/bgp state=directory
+  tags:
+    - bgp
 - name: set up BGP peers
   template: src=roles/dn42/templates/bgp-peer.conf dest=/etc/bgp/{{ item.name }}.conf mode=640
   with_items: "{{ peers }}"
   notify:
     - reload bgp config
+  tags:
+    - bgp
