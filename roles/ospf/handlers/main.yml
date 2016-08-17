@@ -1,6 +1,0 @@
----
-- name: restart ospfd
-  service: name=ospfd state=restarted enabled=yes
-
-- name: restart ospf6d
-  service: name=ospf6d state=restarted enabled=yes

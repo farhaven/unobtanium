@@ -65,6 +65,11 @@ peers:
       rport: 53020
       port: 37173
       tun: 9
+  - name: unobtanium
+    as: 4242422342
+    tunnels:
+      - { r: 172.22.127.2, l: 172.22.127.1 }
+      - { r: "fd97:1c82:9447::1", l: "fd97:1c82:9447::" }
 #   - name: nicoo
 #     as: 4242422121
 #     tunnels:

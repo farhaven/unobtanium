@@ -15,6 +15,7 @@
 
 - name: install openvpn
   package: name=openvpn state=present
+
 - name: create openvpn directories
   file: path=/etc/openvpn/dn42-{{ item.name }} state=directory
   with_items: "{{ peers|selectattr('openvpn', 'defined')|list }}"
