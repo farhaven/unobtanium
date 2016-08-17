@@ -1,7 +1,6 @@
 # Missing
 # - cvsync
 # - gogs
-# - tinc
 # - tor?
 # - install py-netaddr on deploy host?
 ---
@@ -32,6 +31,5 @@
 #         - nmap
 #         - pv
 #         - pwgen
-#         - tinc
 #         - tor
 #         - vim
