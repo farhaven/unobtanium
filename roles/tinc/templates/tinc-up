@@ -1,0 +1,9 @@
+#!/bin/ksh
+# {{ ansible_managed }}
+
+ifconfig $INTERFACE group tinc
+ifconfig $INTERFACE group unobtanium
+ifconfig $INTERFACE inet 172.22.127.1/24
+ifconfig $INTERFACE inet6 alias 2001:470:74bb::/64
+ifconfig $INTERFACE inet6 alias fd97:1c82:9447::/64
+ifconfig $INTERFACE up

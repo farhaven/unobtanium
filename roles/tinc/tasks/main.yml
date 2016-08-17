@@ -1,0 +1,54 @@
+---
+- name: install
+  package: name=tinc state=present
+
+- name: load keys
+  include_vars: "{{ role_path }}/vars/keys.yml"
+  no_log: true
+
+- name: create configuration directory
+  file:
+    path: "/etc/tinc/{{ network }}"
+    state: directory
+    mode: 0755
+
+- name: deploy private key
+  copy:
+    dest: "/etc/tinc/{{ network }}/rsa_key.priv"
+    content: "{{ privkey }}"
+    owner: root
+    group: wheel
+    mode: 0600
+  notify:
+    - restart tinc
+
+- name: configure
+  template:
+    src: "{{ role_path }}/templates/{{ item }}"
+    dest: "/etc/tinc/{{ network }}/{{ item }}"
+  with_items:
+    - tinc.conf
+    - tinc-up
+  notify:
+    - restart tinc
+
+- name: create host directory
+  file:
+    path: "/etc/tinc/{{ network }}/hosts"
+    state: directory
+
+- name: set up hosts
+  template:
+    src: "{{ role_path }}/templates/host"
+    dest: "/etc/tinc/{{ network }}/hosts/{{ item }}"
+  with_items: "{{ hosts|list }}"
+  notify:
+    - restart tinc
+
+- name: set up hostname
+  copy:
+    dest: /etc/hostname.tap0
+    content: |
+      !/usr/local/sbin/tincd -n {{ network }}
+  notify:
+    - restart tincd

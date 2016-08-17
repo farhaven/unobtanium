@@ -1,0 +1,23 @@
+network: unobtanium
+hosts:
+  charm:
+    key: |
+      -----BEGIN RSA PUBLIC KEY-----
+      MIIBCgKCAQEAsRnMcat1XPNi4K0PUbxaUgStKz/JMSaU8ShJEvGO3i4izciSSAJk
+      aE7j4QHl+F7PZjvI9atWiE4Op1UBya7obHX7Fr48mi1PVcsrDYZj5rgcUIcZuuJQ
+      jTprAgMwfSwt2tMsLirMtwNdJ39xawfIQxyHcB0PSH6tDbMn429s2R9wq8Cym25d
+      7Rj9iXMjNhy2BscOpNVOrfRuaEkb6jgZb0QmxGH79VhRBoTz7XbVIBq+FKmoC3yJ
+      nlIx68KkRnU0siGCCpNCA01jOtsPFwEI4PlbI97OX/d7fG0vUGg4OEJgYkl7deSU
+      REJ1TWmBxqPSNpQM0XTqR/woENVqAN1LBwIDAQAB
+      -----END RSA PUBLIC KEY-----
+    address: 94.242.59.125
+  hydrogen:
+    key: |
+      -----BEGIN RSA PUBLIC KEY-----
+      MIIBCgKCAQEAogkF4kKQ+3UyrhI/7VFIb7Sg0lPZ5UpW2MiWzuaFTITvjPPc7Anw
+      VhPNt7U7yOaXob+hXI0u77H7b8Q6Djq7MRjjtsDpEtp0mhLrPfNrNhQLD7w6Lrn5
+      vJRyMXtxvGbezMhLBY7vYoOJWpwcH9uPvbQyLKAiNgI4lGULo+mi7ILqXViYCc8L
+      0Y+xqK51mzrgNJWdU5+u5Qus6dy8TcZcIegda0A8Y5WzXL1PsQVg99NTh81wn5E3
+      xkiw6OhOnYrOy/qRkDn4LoAIYze9usFYYY3iNUEZ1GqiNL4dTxLox0+GiwWj8hx8
+      3BHOdDMkRZFN/GG+yrArKVh96KLTHdBmkwIDAQAB
+      -----END RSA PUBLIC KEY-----

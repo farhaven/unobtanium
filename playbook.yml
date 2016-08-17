@@ -11,6 +11,7 @@
       copy: src=files/pkg.conf dest=/etc/pkg.conf
 - hosts: charm
   roles:
+    - { role: tinc, tags: ['tinc'] }
     - nginx
     - smtpd
     - network

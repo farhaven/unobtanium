@@ -1,0 +1,3 @@
+---
+- name: restart tinc
+  shell: pkill -HUP || /usr/local/sbin/tincd -n unobtanium
