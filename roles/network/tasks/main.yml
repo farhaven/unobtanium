@@ -13,3 +13,8 @@
     dest: /etc/pf.conf
   notify:
     - reload pf ruleset
+
+- name: v6 ping fix
+  cron:
+    name: regular ping to fix hanging v6
+    job: ping6 -c1 -n heise.de 2>/dev/null >/dev/null
