@@ -1,0 +1,19 @@
+---
+- name: install
+  package: name=cvsync state=present
+
+- name: create CVS home
+  file:
+    path: "{{ cvs.dir }}"
+    state: directory
+
+- name: configure
+  template: src="{{ role_path }}/templates/cvsyncrc" dest="{{ cvs.dir }}/cvsyncrc"
+
+- name: cronjob
+  cron:
+    name: cvsync
+    job: /usr/local/bin/cvsync -c {{ cvs.dir }}/cvsyncrc
+    day: "*"
+    hour: "*/3"
+    minute: 0

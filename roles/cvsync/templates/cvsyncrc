@@ -1,0 +1,24 @@
+# {{ ansible_managed }}
+
+config {
+        # hostname anoncvs.eu.openbsd.org
+        hostname {{ cvs.host }}
+        collection {
+                name openbsd-cvsroot
+                release rcs
+                prefix {{ cvs.dir }}
+                umask 002
+        }
+        collection {
+                name openbsd-src
+                release rcs
+                prefix {{ cvs.dir }}
+                umask 002
+        }
+        collection {
+                name openbsd-ports
+                release rcs
+                prefix {{ cvs.dir }}
+                umask 002
+        }
+}

@@ -1,5 +1,4 @@
 # Missing
-# - cvsync
 # - gogs
 # - tor?
 # - install py-netaddr on deploy host?
@@ -16,12 +15,12 @@
     - { role: network, tags: ['network'] }
     - weechat
     - { role: dn42, tags: ["dn42"] }
+    - cvsync
 #     - name: install packages
 #       package: name={{ item }} state=present
 #       with_items:
 #         - bash
 #         - bzip2
-#         - cvsync
 #         - git
 #         - iodine
 #         - mtr

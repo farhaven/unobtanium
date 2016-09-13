@@ -1,0 +1,4 @@
+---
+cvs:
+  dir: /home/cvs
+  host: ftp.hostserver.de
