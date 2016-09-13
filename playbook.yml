@@ -13,7 +13,7 @@
     - { role: tinc, tags: ['tinc'] }
     - nginx
     - smtpd
-    - network
+    - { role: network, tags: ['network'] }
     - weechat
     - { role: dn42, tags: ["dn42"] }
 #     - name: install packages
