@@ -1,0 +1,31 @@
+---
+- name: enable bgpd
+  service: name=bgpd enabled=yes
+  notify:
+    - restart bgpd
+  tags:
+    - bgp
+- name: configure bgpd
+  template:
+    src: "{{ role_path }}/templates/bgpd.conf"
+    dest: /etc/bgpd.conf
+    mode: 640
+  notify:
+    - reload bgp config
+  tags:
+    - bgp
+
+- name: create BGP peer directory
+  file: path=/etc/bgp state=directory
+  tags:
+    - bgp
+- name: set up BGP peers
+  template:
+    src: "{{ role_path }}/templates/bgp-peer.conf"
+    dest: "/etc/bgp/{{ item.name }}.conf"
+    mode: 640
+  with_items: "{{ peers }}"
+  notify:
+    - reload bgp config
+  tags:
+    - bgp

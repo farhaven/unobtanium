@@ -1,0 +1,32 @@
+---
+- name: install openvpn
+  package: name=openvpn state=present
+
+- name: create openvpn directories
+  file: path=/etc/openvpn/dn42-{{ item.name }} state=directory
+  with_items: "{{ peers|selectattr('openvpn', 'defined')|list }}"
+- name: configure openvpn
+  template:
+    src: "{{ role_path }}/templates/openvpn.conf"
+    dest: "/etc/openvpn/dn42-{{ item.name }}/config"
+  with_items: "{{ peers|selectattr('openvpn', 'defined')|list }}"
+  notify:
+    - netstart
+- name: load openvpn keys
+  include_vars: "{{ role_path }}/vars/keys.yml"
+  no_log: true
+- name: deploy openvpn keys
+  copy:
+    dest: /etc/openvpn/dn42-{{ item.name }}/key
+    content: "{{ openvpn_keys[item.name] }}"
+  with_items: "{{ peers | selectattr('openvpn', 'defined')|list }}"
+  notify:
+    - netstart
+- name: configure openvpn hostnames
+  template:
+    src: "{{ role_path }}/templates/hostname"
+    dest: "/etc/hostname.tun{{ item.openvpn.tun }}"
+  with_items: "{{ peers|selectattr('openvpn', 'defined')|list }}"
+  notify:
+    - netstart
+

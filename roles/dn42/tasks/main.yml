@@ -3,7 +3,6 @@
 #   - automatically enumerate tun devices
 #     - is that still required with dynamic tun?
 # - IPSec
-# - Name server
 # - Looking glass
 # - DN42 specific mail server stuff?
 #   - similar to PF config
@@ -16,64 +15,6 @@
   notify:
     - reload pf ruleset
 
-- name: install openvpn
-  package: name=openvpn state=present
-
-- name: create openvpn directories
-  file: path=/etc/openvpn/dn42-{{ item.name }} state=directory
-  with_items: "{{ peers|selectattr('openvpn', 'defined')|list }}"
-- name: configure openvpn
-  template:
-    src: "{{ role_path }}/templates/openvpn.conf"
-    dest: "/etc/openvpn/dn42-{{ item.name }}/config"
-  with_items: "{{ peers|selectattr('openvpn', 'defined')|list }}"
-  notify:
-    - netstart
-- name: load openvpn keys
-  include_vars: "{{ role_path }}/vars/keys.yml"
-  no_log: true
-- name: deploy openvpn keys
-  copy:
-    dest: /etc/openvpn/dn42-{{ item.name }}/key
-    content: "{{ openvpn_keys[item.name] }}"
-  with_items: "{{ peers | selectattr('openvpn', 'defined')|list }}"
-  notify:
-    - netstart
-- name: configure openvpn hostnames
-  template:
-    src: "{{ role_path }}/templates/hostname"
-    dest: "/etc/hostname.tun{{ item.openvpn.tun }}"
-  with_items: "{{ peers|selectattr('openvpn', 'defined')|list }}"
-  notify:
-    - netstart
-
-- name: enable bgpd
-  service: name=bgpd enabled=yes
-  notify:
-    - restart bgpd
-  tags:
-    - bgp
-- name: configure bgpd
-  template:
-    src: "{{ role_path }}/templates/bgpd.conf"
-    dest: /etc/bgpd.conf
-    mode: 640
-  notify:
-    - reload bgp config
-  tags:
-    - bgp
-
-- name: create BGP peer directory
-  file: path=/etc/bgp state=directory
-  tags:
-    - bgp
-- name: set up BGP peers
-  template:
-    src: "{{ role_path }}/templates/bgp-peer.conf"
-    dest: "/etc/bgp/{{ item.name }}.conf"
-    mode: 640
-  with_items: "{{ peers }}"
-  notify:
-    - reload bgp config
-  tags:
-    - bgp
+- include: vpn.yml
+- include: bgp.yml
+- include: dns.yml

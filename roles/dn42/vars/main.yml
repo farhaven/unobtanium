@@ -2,6 +2,17 @@
 my:
   as: 4242422342
   router_id: 172.22.127.1
+dns:
+  zone: gbe.dn42.
+  serial: 2
+  v4:
+    charm: "{{ my.router_id }}"
+    hydrogen: 172.22.127.2
+  v6:
+    charm: "fd97:1c82:9447::"
+    hydrogen: "fd97:1c82:9447::1"
+  cnames:
+    lg: charm
 peers:
   - name: moho
     as: 4242423754

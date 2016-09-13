@@ -1,0 +1,19 @@
+---
+- name: configure nsd
+  template:
+    src: "{{ role_path }}/templates/nsd.conf"
+    dest: /var/nsd/etc/nsd.conf
+  notify:
+    - restart nsd
+
+- name: configure zone file
+  template:
+    src: "{{ role_path }}/templates/zone"
+    dest: /var/nsd/zones/dn42.zone
+  notify:
+    - restart nsd
+
+- name: enable nsd
+  service: name=nsd enabled=yes
+  notify:
+    - restart nsd

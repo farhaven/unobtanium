@@ -5,3 +5,5 @@
   command: bgpctl reload
 - name: netstart
   command: sh /etc/netstart
+- name: restart nsd
+  service: name=nsd state=restarted
