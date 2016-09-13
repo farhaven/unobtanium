@@ -9,7 +9,10 @@
 #   - similar to PF config
 ---
 - name: set up DN42 PF configuration
-  template: src=roles/dn42/templates/pf.dn42.conf dest=/etc/pf.dn42.conf mode=0640
+  template:
+    src: "{{ role_path }}/templates/pf.dn42.conf"
+    dest: /etc/pf.dn42.conf
+    mode: 0640
   notify:
     - reload pf ruleset
 
@@ -20,7 +23,9 @@
   file: path=/etc/openvpn/dn42-{{ item.name }} state=directory
   with_items: "{{ peers|selectattr('openvpn', 'defined')|list }}"
 - name: configure openvpn
-  template: src=roles/dn42/templates/openvpn.conf dest=/etc/openvpn/dn42-{{ item.name }}/config
+  template:
+    src: "{{ role_path }}/templates/openvpn.conf"
+    dest: "/etc/openvpn/dn42-{{ item.name }}/config"
   with_items: "{{ peers|selectattr('openvpn', 'defined')|list }}"
   notify:
     - netstart
@@ -35,7 +40,9 @@
   notify:
     - netstart
 - name: configure openvpn hostnames
-  template: src=roles/dn42/templates/hostname dest=/etc/hostname.tun{{ item.openvpn.tun }}
+  template:
+    src: "{{ role_path }}/templates/hostname"
+    dest: "/etc/hostname.tun{{ item.openvpn.tun }}"
   with_items: "{{ peers|selectattr('openvpn', 'defined')|list }}"
   notify:
     - netstart
@@ -47,7 +54,10 @@
   tags:
     - bgp
 - name: configure bgpd
-  template: src=roles/dn42/templates/bgpd.conf dest=/etc/bgpd.conf mode=640
+  template:
+    src: "{{ role_path }}/templates/bgpd.conf"
+    dest: /etc/bgpd.conf
+    mode: 640
   notify:
     - reload bgp config
   tags:
@@ -58,7 +68,10 @@
   tags:
     - bgp
 - name: set up BGP peers
-  template: src=roles/dn42/templates/bgp-peer.conf dest=/etc/bgp/{{ item.name }}.conf mode=640
+  template:
+    src: "{{ role_path }}/templates/bgp-peer.conf"
+    dest: "/etc/bgp/{{ item.name }}.conf"
+    mode: 640
   with_items: "{{ peers }}"
   notify:
     - reload bgp config

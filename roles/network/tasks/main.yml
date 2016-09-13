@@ -1,10 +1,15 @@
 ---
 - name: configure interfaces
-  copy: src=roles/network/files/hostname.{{ item }} dest=/etc/hostname.{{ item }}
+  copy:
+    src: "{{ role_path }}/files/hostname.{{ item }}"
+    dest: "/etc/hostname.{{ item }}"
   with_items:
     - gif0
     - vio0
+
 - name: configure PF
-  copy: src=roles/network/files/pf.conf dest=/etc/pf.conf
+  copy:
+    src: "{{ role_path }}/files/pf.conf"
+    dest: /etc/pf.conf
   notify:
     - reload pf ruleset
