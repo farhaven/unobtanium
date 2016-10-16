@@ -3,7 +3,7 @@
   package: name=mosquitto state=present
 
 - name: configure
-  copy: src="{{ role_path }}/files/mosquitto.conf" dest=/etc/mosquitto/mosquitto.conf
+  copy: src=mosquitto.conf dest=/etc/mosquitto/mosquitto.conf
   notify:
     - restart mosquitto
 

@@ -5,7 +5,7 @@
     - restart smtpd
 - name: configure
   copy:
-    src: "{{ role_path }}/files/{{ item }}"
+    src: "{{ item }}"
     dest: "/etc/mail/{{ item }}"
   with_items:
     - aliases

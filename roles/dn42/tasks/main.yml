@@ -9,7 +9,7 @@
 ---
 - name: set up DN42 PF configuration
   template:
-    src: "{{ role_path }}/templates/pf.dn42.conf"
+    src: pf.dn42.conf
     dest: /etc/pf.dn42.conf
     mode: 0640
   notify:

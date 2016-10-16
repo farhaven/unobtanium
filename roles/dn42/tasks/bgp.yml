@@ -7,9 +7,9 @@
     - bgp
 - name: configure bgpd
   template:
-    src: "{{ role_path }}/templates/bgpd.conf"
+    src: bgpd.conf
     dest: /etc/bgpd.conf
-    mode: 640
+    mode: 0640
   notify:
     - reload bgp config
   tags:
@@ -21,9 +21,9 @@
     - bgp
 - name: set up BGP peers
   template:
-    src: "{{ role_path }}/templates/bgp-peer.conf"
+    src: bgp-peer.conf
     dest: "/etc/bgp/{{ item.name }}.conf"
-    mode: 640
+    mode: 0640
   with_items: "{{ peers }}"
   notify:
     - reload bgp config

@@ -8,7 +8,7 @@
     state: directory
 
 - name: configure
-  template: src="{{ role_path }}/templates/cvsyncrc" dest="{{ cvs.dir }}/cvsyncrc"
+  template: src=cvsyncrc dest="{{ cvs.dir }}/cvsyncrc"
 
 - name: cronjob
   cron:

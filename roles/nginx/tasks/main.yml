@@ -11,7 +11,7 @@
     - restart nginx
 - name: configure
   copy:
-    src: "{{ role_path }}/files/{{ item }}"
+    src: "{{ item }}"
     dest: "/etc/nginx/{{ item }}"
   with_items:
     - nginx.conf

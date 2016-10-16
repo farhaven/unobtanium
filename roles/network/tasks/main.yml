@@ -1,7 +1,7 @@
 ---
 - name: configure interfaces
   copy:
-    src: "{{ role_path }}/files/hostname.{{ item }}"
+    src: "hostname.{{ item }}"
     dest: "/etc/hostname.{{ item }}"
   with_items:
     - gif0
@@ -9,7 +9,7 @@
 
 - name: configure PF
   copy:
-    src: "{{ role_path }}/files/pf.conf"
+    src: pf.conf
     dest: /etc/pf.conf
   notify:
     - reload pf ruleset

@@ -24,7 +24,7 @@
 
 - name: configure
   template:
-    src: "{{ role_path }}/templates/{{ item }}"
+    src: "{{ item }}"
     dest: "/etc/tinc/{{ network }}/{{ item }}"
   with_items:
     - tinc.conf
@@ -39,7 +39,7 @@
 
 - name: set up hosts
   template:
-    src: "{{ role_path }}/templates/host"
+    src: host
     dest: "/etc/tinc/{{ network }}/hosts/{{ item }}"
   with_items: "{{ hosts|list }}"
   notify:

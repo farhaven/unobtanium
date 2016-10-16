@@ -1,14 +1,14 @@
 ---
 - name: configure nsd
   template:
-    src: "{{ role_path }}/templates/nsd.conf"
+    src: nsd.conf
     dest: /var/nsd/etc/nsd.conf
   notify:
     - restart nsd
 
 - name: configure zone file
   template:
-    src: "{{ role_path }}/templates/zone"
+    src: zone
     dest: /var/nsd/zones/dn42.zone
   notify:
     - restart nsd
