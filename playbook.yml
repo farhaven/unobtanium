@@ -17,5 +17,5 @@
     - weechat
     - { role: dn42, tags: [ dn42 ] }
     - cvsync
-    # - { role: packages, tags: [ packages ] }
+    - { role: packages, tags: [ packages ] }
     - mosquitto
