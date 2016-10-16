@@ -1,0 +1,23 @@
+---
+- name: install
+  package: name=mosquitto state=present
+
+- name: configure
+  copy: src="{{ role_path }}/files/mosquitto.conf" dest=/etc/mosquitto/mosquitto.conf
+  notify:
+    - restart mosquitto
+
+- name: set up user auth file
+  file: path=/etc/mosquitto/users.conf state=touch
+
+- name: load MQTT users
+  include_vars: "{{ role_path }}/vars/users.yml"
+  no_log: true
+
+- name: add users
+  command: "mosquitto_passwd -b /etc/mosquitto/users.conf {{ item.key }} {{ item.value }}"
+  with_dict: "{{ mqtt_users }}"
+  no_log: true
+
+- name: enable
+  service: name=mosquitto state=started enabled=yes
