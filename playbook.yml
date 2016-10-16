@@ -10,12 +10,12 @@
 - hosts: charm
   roles:
     - services
-    - { role: tinc, tags: ['tinc'] }
+    - { role: tinc, tags: [ tinc ] }
     - nginx
     - smtpd
-    - { role: network, tags: ['network'] }
+    - { role: network, tags: [ network ] }
     - weechat
-    - { role: dn42, tags: ["dn42"] }
+    - { role: dn42, tags: [ dn42 ] }
     - cvsync
 #     - name: install packages
 #       package: name={{ item }} state=present
