@@ -32,3 +32,4 @@
 #         - pwgen
 #         - tor
 #         - vim
+    - mosquitto
