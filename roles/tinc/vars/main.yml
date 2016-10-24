@@ -21,3 +21,13 @@ hosts:
       xkiw6OhOnYrOy/qRkDn4LoAIYze9usFYYY3iNUEZ1GqiNL4dTxLox0+GiwWj8hx8
       3BHOdDMkRZFN/GG+yrArKVh96KLTHdBmkwIDAQAB
       -----END RSA PUBLIC KEY-----
+  sputnik:
+    key: |
+      -----BEGIN RSA PUBLIC KEY-----
+      MIIBCgKCAQEAu9fNS9x+IVFN/bShTPzJ9TL8Kx1iXL0ImtSTyRgvjLzTsLygWHmA
+      SiwE7wzt9N+sBmPxXz9rbqMCV2ON9+WY6Sr25wUxFjUBIsioUNDpkwfxmsPOmIV2
+      rzjx6IKnXJF9blsHubcLiIPDdYzR9Mws5bh04S8LtPBGfoTyT3V6JEB5Ovb8RnTl
+      dKXSK22DaRjNl2HncWuQHGxxjAVeqycrpqVjDAVx7onMwJMGtIakQK71mziJ7ARC
+      2G1lOXW0XqlgNv/pVKoV5NvTjSFvatVJenxEJvPiYqPaFM2MgItWQG4+qpT5AYy6
+      ByLWZqofx5F8m4c4d40XBBhhRSRFwRFZGQIDAQAB
+      -----END RSA PUBLIC KEY-----
