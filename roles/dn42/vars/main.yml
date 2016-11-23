@@ -76,6 +76,17 @@ peers:
       rport: 53020
       port: 37173
       tun: 9
+  - name: qsx
+    as: 4242427761
+    tunnels:
+      - { r: 169.254.42.5, l: 169.254.42.6 }
+    openvpn:
+      remote: blackhole.qsuscs.de
+      port: 29971
+      tun: 10
+      do_compress: no
+      extra: |
+        cipher aes-256-cbc
   - name: unobtanium
     as: 4242422342
     tunnels:
