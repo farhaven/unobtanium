@@ -87,6 +87,14 @@ peers:
       do_compress: no
       extra: |
         cipher aes-256-cbc
+  - name: pascal
+    as: 4242420205
+    tunnels:
+      - { r: 172.20.234.1, l: 169.254.23.1 }
+    openvpn:
+      remote: dn42.root6.de
+      port: 50005
+      tun: 11
   - name: unobtanium
     as: 4242422342
     tunnels:
