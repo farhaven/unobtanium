@@ -7,7 +7,7 @@ $TTL 300
     1200 )       ; minimum
 
 {% for ns in nwconfig.dns.nameservers %}
-@ IN NS {{ ns }}
+@ IN NS {{ ns }}.
 {% endfor %}
 
 @ IN A    {{ nwconfig.ipv4addr }}
