@@ -16,5 +16,7 @@
     - reload pf ruleset
 
 - include: vpn.yml
+  tags: [ vpn ]
 - include: bgp.yml
 - include: dns.yml
+  tags: [ dns ]
