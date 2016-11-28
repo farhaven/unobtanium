@@ -100,6 +100,26 @@ peers:
       remote: dn42.root6.de
       port: 50005
       tun: 11
+  - name: gruetzkopf
+    as: 4242420442
+    tunnels:
+      - { r: 172.20.239.65, l: 169.254.0.1 }
+      - { r: 'fd14:70d8:4a5a:11::2', l: 'fd14:70d8:4a5a:11::1' }
+    openvpn:
+      remote: daemon.gruetzkopf.org
+      port: 4279
+      tun: 12
+  - name: gigadoc2
+    as: 4242420003
+    tunnels:
+      - { r: 172.22.255.71, l: 169.254.0.2 }
+      - { r: 'fd14:70d8:4a5a:8::2', l: 'fd14:70d8:4a5a:8::1' }
+    openvpn:
+      remote: dn42.nicht.jetzt
+      port: 32754
+      tun: 13
+      extra: |
+        cipher aes-256-cbc
   - name: unobtanium
     as: 4242422342
     tunnels:
@@ -134,8 +154,3 @@ peers:
 #     tunnels:
 #       - { r: 172.22.255.83 }
 #       - { r: 'fd14:70d8:4a5a:2::2' }
-#   - name: gigadoc2
-#     as: 4242420003
-#     tunnels:
-#       - { r: 172.22.255.71 }
-#       - { r: 'fd14:70d8:4a5a:8::2' }
