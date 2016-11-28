@@ -1,0 +1,34 @@
+$TTL 300
+@   IN SOA ns.unobtanium.de. gbe.ring0.de. (
+    {{ lookup('pipe', 'date +%Y%m%d%S') }} ; serial
+    3600         ; refresh
+    300          ; retry
+    604800       ; expire
+    1200 )       ; minimum
+
+{% for ns in nwconfig.dns.nameservers %}
+@ IN NS {{ ns }}
+{% endfor %}
+
+@ IN A    {{ nwconfig.ipv4addr }}
+@ IN AAAA {{ nwconfig.ipv6addr }}
+@ IN MX   5 {{ nwconfig.dns.mx }}
+
+{% for entry in nwconfig.dns.hostnames %}
+{{ entry }} IN A {{ nwconfig.ipv4addr }}
+{{ entry }} IN A {{ nwconfig.ipv6addr }}
+{{ entry }} IN MX 5 {{ nwconfig.dns.mx }}
+{% endfor %}
+
+{% for r in nwconfig.dns.records %}
+{{ r.host }} IN {{ r.type }} {{ r.value }}
+{{ r.host }} IN MX 5 {{ nwconfig.dns.mx }}
+{% endfor %}
+
+{% for entry in nwconfig.dns.cnames %}
+{{ entry.0 }} IN CNAME {{ entry.1 }}
+{% endfor %}
+
+{% for entry in nwconfig.dns.txt %}
+{{ entry.name }} IN TXT "{{ entry.text }}"
+{% endfor %}

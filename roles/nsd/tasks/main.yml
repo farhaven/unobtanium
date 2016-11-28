@@ -1,0 +1,22 @@
+---
+- name: configure nsd
+  template:
+    src: "{{ item }}"
+    dest: "/var/nsd/etc/{{ item }}"
+  notify:
+    - restart nsd
+  with_items:
+    - nsd.conf
+    - nsd.unobtanium.conf
+
+- name: deploy unobtanium zone file
+  template:
+    dest: /var/nsd/zones/unobtanium.zone
+    src: unobtanium.zone
+  notify:
+    - restart nsd
+
+- name: enable nsd
+  service: name=nsd enabled=yes
+  notify:
+    - restart nsd

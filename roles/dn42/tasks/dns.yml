@@ -2,7 +2,7 @@
 - name: configure nsd
   template:
     src: nsd.conf
-    dest: /var/nsd/etc/nsd.conf
+    dest: /var/nsd/etc/nsd.dn42.conf
   notify:
     - restart nsd
 
@@ -10,6 +10,14 @@
   template:
     src: zone
     dest: /var/nsd/zones/dn42.zone
+  notify:
+    - restart nsd
+
+- name: add dn42 DNS config to NSD
+  lineinfile:
+    insertafter: EOF
+    line: "include: /var/nsd/etc/nsd.dn42.conf"
+    dest: /var/nsd/etc/nsd.conf
   notify:
     - restart nsd
 

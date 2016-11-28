@@ -8,14 +8,17 @@
     - name: configure pkg
       copy: src=files/pkg.conf dest=/etc/pkg.conf
 - hosts: charm
+  vars_files:
+    - vars/main.yml
   roles:
     - services
     - { role: tinc, tags: [ tinc ] }
+    - { role: network, tags: [ network ] }
+    - { role: nsd, tags: [ dns ] }
+    - { role: dn42, tags: [ dn42 ] }
     - nginx
     - smtpd
-    - { role: network, tags: [ network ] }
-    - weechat
-    - { role: dn42, tags: [ dn42 ] }
     - cvsync
     - { role: packages, tags: [ packages ] }
+    - weechat
     - mosquitto
