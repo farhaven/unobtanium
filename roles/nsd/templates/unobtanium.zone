@@ -16,7 +16,7 @@ $TTL 300
 
 {% for entry in nwconfig.dns.hostnames %}
 {{ entry }} IN A {{ nwconfig.ipv4addr }}
-{{ entry }} IN A {{ nwconfig.ipv6addr }}
+{{ entry }} IN AAAA {{ nwconfig.ipv6addr }}
 {{ entry }} IN MX 5 {{ nwconfig.dns.mx }}
 {% endfor %}
 
