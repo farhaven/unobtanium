@@ -165,6 +165,7 @@ peers:
       tun: 17
       extra: |
         float
+        proto udp6
   - name: stv0g
     as: 76100
     tunnels:
