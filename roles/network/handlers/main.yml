@@ -1,3 +1,6 @@
 ---
 - name: reload pf ruleset
   command: pfctl -f /etc/pf.conf
+
+- name: reload spamd blacklists
+  command: /usr/libexec/spamd-setup -b

@@ -18,3 +18,27 @@
   cron:
     name: regular ping to fix hanging v6
     job: ping6 -c1 -n heise.de 2>/dev/null >/dev/null
+
+- name: enable spamd
+  service: name=spamd enabled=yes
+
+- name: set spamd flags
+  command: rcctl set spamd flags "-b"
+
+- name: configure spamd
+  copy:
+    src: spamd.conf
+    dest: /etc/mail/spamd.conf
+  notify:
+    - reload spamd blacklists
+
+- name: set up spamd-setup
+  cron:
+    name: spamd setup
+    job: /usr/libexec/spamd-setup -b
+    day: "*"
+    hour: "*/3"
+    minute: 0
+
+- name: ensure spamd is running
+  service: name=spamd state=started
