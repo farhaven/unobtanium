@@ -1,8 +1,8 @@
-$TTL 300
+$TTL 900
 @   IN SOA ns.unobtanium.de. gbe.ring0.de. (
     {{ lookup('pipe', 'date +%Y%m%d%S') }} ; serial
     3600         ; refresh
-    300          ; retry
+    900          ; retry
     604800       ; expire
     1200 )       ; minimum
 
