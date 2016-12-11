@@ -1,0 +1,31 @@
+nwconfig:
+  ipv4addr: 94.242.59.125
+  ipv6addr: 2001:470:1f0b:1d3::1
+  dns:
+    mx: mx
+    nameservers:
+      - ns1.he.net
+      - ns2.he.net
+      - ns3.he.net
+      - ns4.he.net
+      - ns5.he.net
+    hostnames:
+      - charm
+      - dn42-4
+      - dn42-64
+      - info
+      - mx
+    cnames:
+      - [ git, charm ]
+      - [ www, charm ]
+    records:
+      - { host: mc, type: A, value: 94.79.156.22 }
+      - { host: boron, type: AAAA, value: "2001:470:74bb::2" }
+      - { host: hydrogen, type: AAAA, value: "2001:470:74bb::1" }
+    txt:
+      - name: "@"
+        text: "boron: debian, beaglebone -- charm: openbsd, vstoike"
+      - name: mc
+        text: "bei fragen: space"
+      - name: test
+        text: "here be dragons"
