@@ -1,0 +1,26 @@
+- name: install letsencrypt
+  package: name=letskencrypt state=present
+- name: prepare letsencrypt directory
+  file: path=/etc/letsencrypt state=directory
+- name: generate OpenSSL private key
+  command: openssl genrsa -out /etc/ssl/letsencrypt/private/privkey.pem 2048
+  args:
+    creates: /etc/ssl/letsencrypt/private/privkey.pem
+  notify:
+    - restart nginx
+- name: generate letsencrypt key
+  command: /usr/local/bin/letskencrypt -vn unobtanium.de git.unobtanium.de www.unobtanium.de
+  args:
+    creates: /etc/letsencrypt/privkey.pem
+  notify:
+    - refresh letsencrypt certificate
+    - restart nginx
+- name: change permissions for letsencrypt private key
+  file: path=/etc/ssl/letsencrypt/private/privkey.pem mode=0640
+- name: add letsencrypt cron job
+  cron:
+    name: "Letsencrypt"
+    job: /usr/local/bin/letskencrypt -v unobtanium.de git.unobtanium.de www.unobtanium.de && (rcctl reload nginx; rcctl restart mosquitto)
+    day: "*/7"
+    hour: "0"
+    minute: "0"

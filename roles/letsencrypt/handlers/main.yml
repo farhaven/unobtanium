@@ -1,0 +1,3 @@
+---
+- name: refresh letsencrypt certificate
+  command: letskencrypt -v unobtanium.de git.unobtanium.de www.unobtanium.de

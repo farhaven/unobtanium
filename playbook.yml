@@ -16,6 +16,7 @@
     - { role: network, tags: [ network ] }
     - { role: nsd, tags: [ dns ] }
     - { role: dn42, tags: [ dn42 ] }
+    - letsencrypt
     - nginx
     - smtpd
     - cvsync
