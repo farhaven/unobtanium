@@ -16,10 +16,10 @@
     - { role: network, tags: [ network ] }
     - { role: nsd, tags: [ dns ] }
     - { role: dn42, tags: [ dn42 ] }
-    - letsencrypt
-    - nginx
-    - smtpd
+    - { role: letsencrypt, tags: [ www, tls ] }
+    - { role: nginx, tags: [ www, tls ] }
+    - { role: smtpd, tags: [ mail, tls ] }
     - cvsync
     - { role: packages, tags: [ packages ] }
     - weechat
-    - mosquitto
+    - { role: mosquitto, tags: [ mqtt, tls ] }
