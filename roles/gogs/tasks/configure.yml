@@ -1,0 +1,24 @@
+---
+- name: Create configuration directory
+  file:
+    path: /home/gogs/go/src/github.com/gogits/gogs/custom/conf
+    state: directory
+
+- name: Create repo path
+  file:
+    path: /home/gogs/gogs-repositories
+    state: directory
+    owner: gogs
+
+- name: Configure
+  template:
+    src: app.ini.j2
+    dest: /home/gogs/go/src/github.com/gogits/gogs/custom/conf/app.ini
+  notify:
+    - restart gogs
+
+- name: Ensure ownership of configuration
+  file:
+    owner: gogs
+    recurse: yes
+    path: /home/gogs/gogs/custom

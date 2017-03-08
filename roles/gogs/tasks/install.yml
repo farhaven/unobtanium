@@ -1,0 +1,22 @@
+---
+- name: Install dependencies
+  package: name="{{ item }}" state=present
+  with_items:
+    - go
+  when: False
+
+- name: Make GOPATH
+  file:
+    path: /home/gogs/go
+    state: directory
+    owner: gogs
+
+- name: Get and build gogs
+  command: "go get -x -tags sqlite github.com/gogits/gogs"
+  args:
+    chdir: /home/gogs/gogs
+  environment:
+    GOPATH: /home/gogs/go
+  become: yes
+  become_method: doas
+  become_user: gogs

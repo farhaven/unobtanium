@@ -1,5 +1,4 @@
 # Missing
-# - gogs
 # - tor?
 # - install py-netaddr on deploy host?
 ---
@@ -23,3 +22,4 @@
     - { role: packages, tags: [ packages ] }
     - weechat
     - { role: mosquitto, tags: [ mqtt, tls ] }
+    - { role: gogs, tags: [ www, gogs ] }

@@ -1,0 +1,11 @@
+#!/bin/sh
+
+daemon="/home/gogs/go/src/github.com/gogits/gogs/gogs web"
+daemon_user="gogs"
+
+. /etc/rc.d/rc.subr
+
+rc_reload=NO
+rc_bg=YES
+
+rc_cmd $1

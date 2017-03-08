@@ -1,0 +1,11 @@
+---
+- name: Configure service file
+  template:
+    src: service.j2
+    dest: /etc/rc.d/gogs
+    mode: 0555
+  notify:
+    - restart gogs
+
+- name: Enable gogs
+  service: name=gogs enabled=yes
