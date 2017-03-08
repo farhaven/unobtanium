@@ -14,7 +14,7 @@
 - name: Get and build gogs
   command: "go get -x -tags sqlite github.com/gogits/gogs"
   args:
-    chdir: /home/gogs/gogs
+    chdir: /home/gogs
   environment:
     GOPATH: /home/gogs/go
   become: yes

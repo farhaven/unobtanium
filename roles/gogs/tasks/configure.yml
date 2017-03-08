@@ -22,3 +22,4 @@
     owner: gogs
     recurse: yes
     path: /home/gogs/gogs/custom
+    state: directory
