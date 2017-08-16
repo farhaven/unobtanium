@@ -8,9 +8,6 @@
     - name: install python2
       raw: sh -c 'which python2.7 || pkg_add -z python-2'
       tags: [ python ]
-    - name: configure pkg
-      copy: src=files/pkg.conf dest=/etc/pkg.conf
-      tags: [ pkg ]
 
 - hosts: unobtanium
   vars_files:
