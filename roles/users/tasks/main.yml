@@ -1,0 +1,12 @@
+---
+- name: create users
+  user:
+    name: "{{ item.key }}"
+    shell: /bin/ksh
+  with_dict: "{{ users }}"
+
+- name: deploy ssh keys
+  authorized_key:
+    user: "{{ item.key }}"
+    key: "{{ item.value.sshkey }}"
+  with_dict: "{{ users }}"

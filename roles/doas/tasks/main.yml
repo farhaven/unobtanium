@@ -1,0 +1,6 @@
+---
+- name: configure doas
+  template:
+    src: doas.conf.j2
+    dest: /etc/doas.conf
+    validate: "doas -C %s"
