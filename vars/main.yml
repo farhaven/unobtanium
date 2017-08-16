@@ -47,3 +47,5 @@ nwconfig:
 users:
   gbe:
     sshkey: ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGagbZSllHhDPbJteyREP5w18H6PlKafyOquIcBdCp7Z gbe@hydrogen.unobtanium.de
+  hme:
+    sshkey: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC/5LZAp4hLD/g7Wk7/YqXsixWmCzywx3jcbNMo1pXQq/+pbHI0xuQgTOcX56pIftGZtZaAqRT9xR4AP7zHpk0ugYomsSRr56kHOyrod96DNPOAGuvDatURdUJkkLj53xMqN1OZeDHe+gOg267Ls/La+hOWBovHSyR2J5azimMP/bAtn/w/mW91d9wuK1eATZH0ZaYXmIYdMFFVuRockuMhBwGVni/O5k23SqQaRHBZrA09DYSg3ezhW1bUt5nkLPIkU1jBoKSz/lGblywaIqDtcJqgqrp3p28daadbgPuCkhddz7Cqtjajo2S/KcDvMGYfNYSo3fYTumI3XrMwBskl horizon@Andromeda
