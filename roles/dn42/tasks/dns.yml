@@ -19,7 +19,8 @@
     line: "include: /var/nsd/etc/nsd.dn42.conf"
     dest: /var/nsd/etc/nsd.conf
   notify:
-    - restart nsd
+    - reload nsd zone file
+    - notify DNS slaves
 
 - name: enable nsd
   service: name=nsd enabled=yes

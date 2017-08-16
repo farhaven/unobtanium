@@ -1,9 +1,0 @@
-up
-
-inet 94.242.59.125/24
-!route -n add -inet default 94.242.59.1
-
-inet6 alias 2a00:1838:20:1::87ea:d64d/64
-inet6 autoconf
-# !route -n add -inet6 default fe80::216:3cff:fe35:1f2b%\$if
-# !route -n add -inet6 default fe80::224:38ff:fe2e:7b00%vio0

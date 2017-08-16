@@ -1,4 +1,7 @@
 ---
+- name: restart network
+  command: sh /etc/netstart
+
 - name: reload pf ruleset
   command: pfctl -f /etc/pf.conf
 

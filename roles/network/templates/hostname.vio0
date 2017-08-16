@@ -1,0 +1,13 @@
+# {{ ansible_managed }}
+
+up
+
+inet {{ nwconfig.ipv4addr }}
+!route -n add -inet default {{ nwconfig.ipv4addr | ipaddr('1') | ipaddr('address') }}
+
+inet6 alias {{ nwconfig.ipv6addr }}
+inet6 autoconf
+# TODO: Fix routing!
+
+# !route -n add -inet6 default fe80::216:3cff:fe35:1f2b%\$if
+# !route -n add -inet6 default fe80::224:38ff:fe2e:7b00%vio0

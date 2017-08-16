@@ -2,15 +2,24 @@
 # - tor?
 # - install py-netaddr on deploy host?
 ---
-- hosts: charm
+- hosts: unobtanium
+  gather_facts: no
   tasks:
+    - name: install python2
+      raw: sh -c 'which python2.7 || pkg_add -z python-2'
+      tags: [ python ]
     - name: configure pkg
       copy: src=files/pkg.conf dest=/etc/pkg.conf
-- hosts: charm
+      tags: [ pkg ]
+
+- hosts: unobtanium
   vars_files:
     - vars/main.yml
   roles:
-    - services
+    - { role: doas, tags: [ auth ] }
+    - { role: users, tags: [ auth ] }
+    - { role: packages, tags: [ packages ] }
+    - { role: services, tags: [ services ] }
     - { role: tinc, tags: [ tinc ] }
     - { role: network, tags: [ network ] }
     - { role: nsd, tags: [ dns ] }
@@ -18,8 +27,7 @@
     - { role: letsencrypt, tags: [ www, tls ] }
     - { role: nginx, tags: [ www, tls ] }
     - { role: smtpd, tags: [ mail, tls ] }
-    - cvsync
-    - { role: packages, tags: [ packages ] }
-    - weechat
+    - { role: cvsync, tags: [ cvsync ] }
+    - { role: weechat, tags: [ weechat ] }
     - { role: mosquitto, tags: [ mqtt, tls ] }
     - { role: gogs, tags: [ www, gogs ] }
