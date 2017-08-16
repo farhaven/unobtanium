@@ -1,6 +1,7 @@
 nwconfig:
-  ipv4addr: 94.242.59.125
-  ipv6addr: 2001:470:1f0b:1d3::1
+  ipv4addr: 77.73.67.110/24
+  # ipv6addr: 2001:470:1f0b:1d3::1
+  ipv6addr: 2001:1838:37:d::dec4/64
   dns:
     notify:
       # Notify both ns1.he.net and slave.dns.he.net
