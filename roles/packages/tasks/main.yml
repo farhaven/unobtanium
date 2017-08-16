@@ -1,15 +1,20 @@
 ---
+- name: configure pkg
+  copy:
+    src: pkg.conf
+    dest: /etc/pkg.conf
+
 - name: install packages
   openbsd_pkg: name={{ item }} state=present
   with_items:
     - bzip2
     - git
     - iodine
-    - mtr
+    - mtr--
     - ncdu
     - lftp
     - nmap
     - pv
     - pwgen
     - tor
-    - vim
+    - vim--no_x11

@@ -1,8 +1,11 @@
 ---
+# TODO: Add SPF entries to DNS
+
 - name: enable
   service: name=smtpd enabled=yes
   notify:
     - restart smtpd
+
 - name: configure
   copy:
     src: "{{ item }}"
@@ -12,3 +15,27 @@
     - smtpd.conf
   notify:
     - restart smtpd
+
+- name: enable spamd
+  service: name=spamd enabled=yes
+
+- name: set spamd flags
+  command: rcctl set spamd flags "-b"
+
+- name: configure spamd
+  copy:
+    src: spamd.conf
+    dest: /etc/mail/spamd.conf
+  notify:
+    - reload spamd blacklists
+
+- name: set up spamd-setup
+  cron:
+    name: spamd setup
+    job: /usr/libexec/spamd-setup -b
+    day: "*"
+    hour: "*/3"
+    minute: 0
+
+- name: ensure spamd is running
+  service: name=spamd state=started

@@ -94,6 +94,12 @@ manager: gbe
 dumper:  gbe
 bernd: gbe
 
-# Spam catchers
+# Spam catchers, generated with pwgen -0A 5 1
 # www.keysight.com
 bohdi: gbe
+# Microsoft, live.com
+heeko: gbe
+# Numer.ai
+thain: gbe
+# Facebook
+etaoin: gbe
