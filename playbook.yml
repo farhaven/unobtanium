@@ -8,6 +8,8 @@
     - name: install python2
       raw: sh -c 'which python2.7 || pkg_add -z python-2'
       tags: [ python ]
+      register: install_python
+      changed_when: '"/usr/local/bin/python2.7" not in install_python.stdout'
 
 - hosts: unobtanium
   vars_files:
