@@ -1,3 +1,5 @@
+{%- set maincnf = nwconfig.addrs[nwconfig.main] -%}
+
 $TTL 900
 @   IN SOA ns.unobtanium.de. gbe.ring0.de. (
     {{ lookup('pipe', 'date +%Y%m%d%S') }} ; serial
@@ -10,13 +12,13 @@ $TTL 900
 @ IN NS {{ ns }}.
 {% endfor %}
 
-@ IN A    {{ nwconfig.ipv4addr }}
-@ IN AAAA {{ nwconfig.ipv6addr }}
+@ IN A    {{ maincnf.ipv4 }}
+@ IN AAAA {{ maincnf.ipv6 }}
 @ IN MX   5 {{ nwconfig.dns.mx }}
 
 {% for entry in nwconfig.dns.hostnames %}
-{{ entry }} IN A {{ nwconfig.ipv4addr }}
-{{ entry }} IN AAAA {{ nwconfig.ipv6addr }}
+{{ entry }} IN A {{ maincnf.ipv4 }}
+{{ entry }} IN AAAA {{ maincnf.ipv6 }}
 {{ entry }} IN MX 5 {{ nwconfig.dns.mx }}
 {% endfor %}
 

@@ -1,11 +1,12 @@
 # {{ ansible_managed }}
+{%- set cnf = nwconfig.addrs[inventory_hostname_short] -%}
 
 up
 
-inet {{ nwconfig.ipv4addr }}
-!route -n add -inet default {{ nwconfig.ipv4addr | ipaddr('1') | ipaddr('address') }}
+inet {{ cnf.ipv4 }}
+!route -n add -inet default {{ cnf.ipv4 | ipaddr('1') | ipaddr('address') }}
 
-inet6 alias {{ nwconfig.ipv6addr }}
+inet6 alias {{ cnf.ipv6 }}
 inet6 autoconf
 # TODO: Fix routing!
 

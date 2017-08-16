@@ -1,7 +1,13 @@
 nwconfig:
-  ipv4addr: 77.73.67.110/24
-  # ipv6addr: 2001:470:1f0b:1d3::1
-  ipv6addr: 2001:1838:37:d::dec4/64
+  main: charm
+  addrs:
+    sojourner:
+      ipv4: 77.73.67.110/24
+      # ipv6addr: 2001:470:1f0b:1d3::1
+      ipv6: 2001:1838:37:d::dec4/64
+    charm:
+      ipv4: 94.242.59.125
+      ipv6: 2a00:1838:20:1::87ea:d64d/64
   dns:
     notify:
       # Notify both ns1.he.net and slave.dns.he.net
@@ -33,7 +39,7 @@ nwconfig:
       - { host: sojourner, type: A, value: 77.73.67.110 }
     txt:
       - name: "@"
-        text: "boron: debian, beaglebone -- charm: openbsd, vstoike"
+        text: "boron: debian, beaglebone -- charm: openbsd, veesp -- sojourner: openbsd, veesp"
       - name: mc
         text: "bei fragen: space"
       - name: test
