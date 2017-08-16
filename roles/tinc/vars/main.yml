@@ -1,5 +1,5 @@
 network: unobtanium
-hosts:
+nodes:
   charm:
     key: |
       -----BEGIN RSA PUBLIC KEY-----
@@ -31,3 +31,7 @@ hosts:
       2G1lOXW0XqlgNv/pVKoV5NvTjSFvatVJenxEJvPiYqPaFM2MgItWQG4+qpT5AYy6
       ByLWZqofx5F8m4c4d40XBBhhRSRFwRFZGQIDAQAB
       -----END RSA PUBLIC KEY-----
+  sojourner:
+    key: |
+      lol
+    address: 77.73.67.110

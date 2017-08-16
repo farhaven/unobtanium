@@ -1,9 +1,11 @@
 ---
-- name: install
-  package: name=tinc state=present
+# See vars/main.yml if you're confused about where all these variables come from
+
+# - name: install
+  # openbsd_pkg: name=tinc state=present
 
 - name: load keys
-  include_vars: "{{ role_path }}/vars/keys.yml"
+  include_vars: vars/keys.yml
   no_log: true
 
 - name: create configuration directory
@@ -15,7 +17,7 @@
 - name: deploy private key
   copy:
     dest: "/etc/tinc/{{ network }}/rsa_key.priv"
-    content: "{{ privkey }}"
+    content: "{{ hosts[ansible_hostname].privkey }}"
     owner: root
     group: wheel
     mode: 0600

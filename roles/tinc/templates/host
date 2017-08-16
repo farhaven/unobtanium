@@ -1,5 +1,5 @@
-{% if hosts[item].address is defined %}
-Address = {{ hosts[item].address }}
+{% if nodes[item].address is defined %}
+Address = {{ nodes[item].address }}
 {% endif %}
 
-{{ hosts[item].key }}
+{{ nodes[item].key }}
