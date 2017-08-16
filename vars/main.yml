@@ -2,6 +2,12 @@ nwconfig:
   ipv4addr: 94.242.59.125
   ipv6addr: 2001:470:1f0b:1d3::1
   dns:
+    notify:
+      # Notify both ns1.he.net and slave.dns.he.net
+      - 216.218.130.2
+      - 2001:470:100::2
+      - 216.218.133.2
+      - 2001:470:600::2
     mx: mx
     nameservers:
       - ns1.he.net
@@ -15,6 +21,7 @@ nwconfig:
       - dn42-64
       - info
       - mx
+      - ns
     cnames:
       - [ git, charm ]
       - [ www, charm ]
@@ -22,6 +29,7 @@ nwconfig:
       - { host: mc, type: A, value: 94.79.156.22 }
       - { host: boron, type: AAAA, value: "2001:470:74bb::2" }
       - { host: hydrogen, type: AAAA, value: "2001:470:74bb::1" }
+      - { host: sojourner, type: A, value: 77.73.67.110 }
     txt:
       - name: "@"
         text: "boron: debian, beaglebone -- charm: openbsd, vstoike"
@@ -29,3 +37,6 @@ nwconfig:
         text: "bei fragen: space"
       - name: test
         text: "here be dragons"
+users:
+  gbe:
+    sshkey: ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGagbZSllHhDPbJteyREP5w18H6PlKafyOquIcBdCp7Z gbe@hydrogen.unobtanium.de

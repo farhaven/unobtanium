@@ -1,3 +1,9 @@
 ---
 - name: restart nsd
   service: name=nsd state=restarted
+
+- name: reload nsd zone file
+  command: nsd-control reload
+
+- name: notify DNS slaves
+  command: nsd-control notify

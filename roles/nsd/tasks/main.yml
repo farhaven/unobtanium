@@ -14,7 +14,8 @@
     dest: /var/nsd/zones/unobtanium.zone
     src: unobtanium.zone
   notify:
-    - restart nsd
+    - reload nsd zone file
+    - notify DNS slaves
 
 - name: enable nsd
   service: name=nsd enabled=yes
