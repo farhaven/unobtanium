@@ -178,6 +178,16 @@ peers:
       port: 31218
       rport: 37163
       tun: 18
+  - name: rappet
+    as: 4242423889
+    tunnels:
+      - { l: 100.64.0.1, r: 100.64.0.2 }
+    openvpn:
+      remote: fra1.rappet.de
+      port: 22141
+      tun: 19
+      extra: |
+        float
   - name: unobtanium
     as: 4242422342
     tunnels:
