@@ -13,6 +13,8 @@
   template:
     src: pf.conf
     dest: /etc/pf.conf
+    mode: 0640
+    validate: pfctl -n -f %s
   notify:
     - reload pf ruleset
 
