@@ -1,9 +1,4 @@
 ---
-- name: configure pkg
-  copy:
-    src: pkg.conf
-    dest: /etc/pkg.conf
-
 - name: install packages
   openbsd_pkg: name={{ item }} state=present
   with_items:
@@ -18,3 +13,5 @@
     - pwgen
     - tor
     - neovim
+
+- include: cleanup.yml

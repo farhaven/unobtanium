@@ -1,0 +1,8 @@
+---
+- name: Remove /etc/pkg.conf
+  file:
+    path: /etc/pkg.conf
+    state: absent
+
+- name: Remove Vim package
+  package: name=vim state=absent
