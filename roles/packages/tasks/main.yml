@@ -17,4 +17,4 @@
     - pv
     - pwgen
     - tor
-    - vim--no_x11
+    - neovim
