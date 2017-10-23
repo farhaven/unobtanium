@@ -1,7 +1,4 @@
 ---
-- name: install letsencrypt
-  package: name=letskencrypt state=present
-
 - name: prepare letsencrypt directory
   file: path=/etc/letsencrypt state=directory
 
