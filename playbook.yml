@@ -10,6 +10,7 @@
       tags: python
       register: install_python
       changed_when: '"/usr/local/bin/python2.7" not in install_python.stdout'
+      check_mode: yes
 
 - hosts: unobtanium
   vars_files:
