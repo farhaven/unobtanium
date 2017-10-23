@@ -1,0 +1,16 @@
+# {{ ansible_managed }}
+
+authority letsencrypt {
+	agreement url https://letsencrypt.org/documents/LE-SA-v1.1.1-August-1-2016.pdf
+	api url "https://acme-v01.api.letsencrypt.org/directory"
+	account key "/etc/letsencrypt/privkey.pem"
+}
+
+domain unobtanium.de {
+	alternative names { git.unobtanium.de www.unobtanium.de }
+	domain key "/etc/ssl/letsencrypt/private/privkey.pem"
+	domain certificate "/etc/ssl/letsencrypt/cert.pem"
+	domain full chain certificate "/etc/ssl/letsencrypt/fullchain.pem"
+	sign with letsencrypt
+	challengedir "/var/www/acme"
+}

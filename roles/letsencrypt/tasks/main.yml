@@ -1,3 +1,4 @@
+---
 - name: install letsencrypt
   package: name=letskencrypt state=present
 
@@ -11,8 +12,14 @@
   notify:
     - restart nginx
 
+- name: configure acme client
+  template:
+    src: acme-client.conf.j2
+    dest: /etc/acme-client.conf
+    validate: acme-client -n -f %s
+
 - name: generate letsencrypt key
-  command: /usr/local/bin/letskencrypt -vn unobtanium.de git.unobtanium.de www.unobtanium.de
+  command: /usr/sbin/acme-client -A unobtanium.de
   args:
     creates: /etc/letsencrypt/privkey.pem
   notify:
@@ -25,7 +32,7 @@
 - name: add letsencrypt cron job
   cron:
     name: "Letsencrypt"
-    job: /usr/local/bin/letskencrypt -v unobtanium.de git.unobtanium.de www.unobtanium.de && (rcctl reload nginx; rcctl restart mosquitto)
+    job: /usr/sbin/acme-client -v unobtanium.de && (rcctl reload nginx; rcctl restart mosquitto)
     day: "*/7"
     hour: "0"
     minute: "0"
